@@ -17,399 +17,69 @@
 
     <title>Dultic | Product and Platform Engineering</title>
 
-    <style>
-      :root {
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system,
-          BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-        color: #f8fafc;
-        background: #020617;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        min-height: 100vh;
-        margin: 0;
-        overflow-x: hidden;
-      }
-
-      body::before {
-        position: fixed;
-        inset: 0;
-        z-index: -3;
-        content: "";
-
-        background-image:
-          linear-gradient(
-            to right,
-            rgba(148, 163, 184, 0.08) 1px,
-            transparent 1px
-          ),
-          linear-gradient(
-            to bottom,
-            rgba(148, 163, 184, 0.08) 1px,
-            transparent 1px
-          );
-
-        background-size: 72px 72px;
-      }
-
-      body::after {
-        position: fixed;
-        top: -220px;
-        right: -180px;
-        z-index: -2;
-
-        width: 620px;
-        height: 620px;
-        border-radius: 50%;
-
-        content: "";
-        background: rgba(16, 185, 129, 0.16);
-        filter: blur(170px);
-      }
-
-      .red-light {
-        position: fixed;
-        bottom: -260px;
-        left: -220px;
-        z-index: -2;
-
-        width: 600px;
-        height: 600px;
-        border-radius: 50%;
-
-        background: rgba(127, 29, 29, 0.14);
-        filter: blur(180px);
-      }
-
-      main {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-        justify-content: space-between;
-
-        max-width: 1500px;
-        margin: 0 auto;
-        padding: 36px 7vw 48px;
-      }
-
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        padding-bottom: 28px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .brand {
-        font-size: 17px;
-        font-weight: 800;
-        letter-spacing: 0.3em;
-      }
-
-      .status {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        color: #94a3b8;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
-
-      .status-dot {
-        width: 8px;
-        height: 8px;
-        background: #10b981;
-      }
-
-      .content {
-        padding: 100px 0;
-      }
-
-      .eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-
-        color: #34d399;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-      }
-
-      .eyebrow::before {
-        width: 48px;
-        height: 1px;
-        content: "";
-        background: #34d399;
-      }
-
-      h1 {
-        max-width: 1100px;
-        margin: 42px 0 0;
-
-        font-size: clamp(56px, 8vw, 126px);
-        line-height: 0.93;
-        letter-spacing: -0.065em;
-      }
-
-      h1 span {
-        color: #10b981;
-      }
-
-      .intro {
-        max-width: 700px;
-        margin-top: 42px;
-
-        color: #94a3b8;
-        font-size: clamp(17px, 2vw, 21px);
-        line-height: 1.8;
-      }
-
-      .launch {
-        display: grid;
-        grid-template-columns: 120px 1fr;
-        gap: 30px;
-
-        max-width: 700px;
-        margin-top: 70px;
-        padding-top: 26px;
-
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .launch-number {
-        color: #34d399;
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.2em;
-      }
-
-      .launch-text {
-        color: #cbd5e1;
-        font-size: 14px;
-        line-height: 1.8;
-      }
-
-      footer {
-        display: flex;
-        justify-content: space-between;
-        gap: 30px;
-
-        padding-top: 28px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-        color: #475569;
-        font-size: 12px;
-      }
-
-      footer a {
-        color: #64748b;
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        color: #34d399;
-      }
-
-      @media (max-width: 640px) {
-        main {
-          padding: 26px 24px 36px;
-        }
-
-        .status {
-          display: none;
-        }
-
-        .content {
-          padding: 90px 0;
-        }
-
-        .launch {
-          grid-template-columns: 1fr;
-          gap: 14px;
-        }
-
-        footer {
-          flex-direction: column;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
   <body>
-    <div class="red-light"></div>
+    <div id="hero-background" aria-hidden="true"></div>
+    <div class="red-light" aria-hidden="true"></div>
 
     <main>
       <header>
-        <div class="brand">DULTIC</div>
+        <a class="brand" href="/" aria-label="Dultic home">
+          DULTIC
+        </a>
 
         <div class="status">
-          <span class="status-dot"></span>
-          Company platform in development
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Development in progress</span>
         </div>
       </header>
 
-      <section class="content">
+      <section class="content" aria-labelledby="hero-heading">
         <div class="eyebrow">
           Product and platform engineering
         </div>
 
-        <h1>
+        <h1 id="hero-heading">
           We build the systems behind
           <span>new ways of doing business.</span>
         </h1>
 
         <p class="intro">
-          Dultic is a Johannesburg-based engineering company
-          developing digital products, operational platforms,
-          cloud-connected systems, and original technology concepts.
+          Dultic designs and develops digital products, platforms
+          and technical systems built around real business problems.
         </p>
 
         <div class="launch">
-          <div class="launch-number">01 / 2026</div>
+          <div class="launch-number">01 / DULTIC</div>
 
           <div class="launch-text">
-            Our complete company platform is currently being prepared
-            for public launch. Project discussions and engineering
-            enquiries will open soon.
+            Our full digital presence is currently being developed.
+            This temporary space marks the beginning of what we are
+            building.
           </div>
         </div>
       </section>
 
       <footer>
         <span>
-          © <span id="year"></span> Dultic. All rights reserved.
+          Johannesburg, South Africa
         </span>
 
-        <span>Johannesburg, South Africa</span>
-
-        <a href="mailto:hellodultic@gmail.com">
-          hellodultic@gmail.com
+        <a href="mailto:hello@dultic.co.za">
+          hello@dultic.co.za
         </a>
       </footer>
     </main>
 
-    <script>
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
-    <script type="module">
-  import {
-    animate,
-    createTimeline,
-    splitText,
-    stagger,
-  } from "https://cdn.jsdelivr.net/npm/animejs@4.5.0/+esm";
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
 
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
-
-  if (!reducedMotion) {
-    document.fonts.ready.then(() => {
-      const heading = splitText("h1", {
-        words: {
-          wrap: "clip",
-          class: "hero-word",
-        },
-        accessible: true,
-      });
-
-      const introTimeline = createTimeline({
-        defaults: {
-          ease: "outExpo",
-        },
-      });
-
-      introTimeline
-        .add(
-          "header",
-          {
-            opacity: { from: 0 },
-            y: { from: -18 },
-            duration: 800,
-          },
-          0
-        )
-        .add(
-          ".eyebrow",
-          {
-            opacity: { from: 0 },
-            x: { from: -28 },
-            duration: 700,
-          },
-          180
-        )
-        .add(
-          heading.words,
-          {
-            opacity: { from: 0 },
-            y: { from: "120%" },
-            duration: 1100,
-            delay: stagger(80),
-          },
-          280
-        )
-        .add(
-          ".intro",
-          {
-            opacity: { from: 0 },
-            y: { from: 28 },
-            duration: 900,
-          },
-          760
-        )
-        .add(
-          ".launch",
-          {
-            opacity: { from: 0 },
-            y: { from: 28 },
-            duration: 900,
-          },
-          900
-        )
-        .add(
-          "footer",
-          {
-            opacity: { from: 0 },
-            y: { from: 16 },
-            duration: 750,
-          },
-          1050
-        );
-
-      animate(".status-dot", {
-        scale: 1.7,
-        opacity: 0.35,
-        duration: 950,
-        alternate: true,
-        loop: true,
-        ease: "inOutSine",
-      });
-    });
-  }
-</script>
+    <script
+      type="module"
+      src="./js/script.js"
+    ></script>
   </body>
 </html>
