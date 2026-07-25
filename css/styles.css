@@ -17,22 +17,17 @@ html {
 
 body {
   position: relative;
-
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-
   background: #020617;
   isolation: isolate;
 }
-
-/* Animated Vanta background */
 
 #hero-background {
   position: fixed;
   inset: 0;
   z-index: 0;
-
   overflow: hidden;
   pointer-events: none;
 }
@@ -40,7 +35,6 @@ body {
 #hero-background::after {
   position: absolute;
   inset: 0;
-
   content: "";
   pointer-events: none;
 
@@ -52,35 +46,6 @@ body {
       rgba(2, 6, 23, 0.9) 100%
     );
 }
-
-/* Technical grid */
-
-body::before {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-
-  content: "";
-  pointer-events: none;
-  opacity: 0.65;
-
-  background-image:
-    linear-gradient(
-      to right,
-      rgba(148, 163, 184, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(148, 163, 184, 0.08) 1px,
-      transparent 1px
-    );
-
-  background-size: 72px 72px;
-}
-
-/* Green ambient light */
 
 body::after {
   position: fixed;
@@ -98,8 +63,6 @@ body::after {
   background: rgba(16, 185, 129, 0.13);
   filter: blur(170px);
 }
-
-/* Red ambient light */
 
 .red-light {
   position: fixed;
@@ -256,6 +219,12 @@ footer {
   font-size: 12px;
 }
 
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 footer a {
   color: #64748b;
   text-decoration: none;
@@ -294,8 +263,14 @@ footer a:focus-visible,
     gap: 14px;
   }
 
-  footer {
+  footer,
+  .footer-contact {
+    align-items: flex-start;
     flex-direction: column;
+  }
+
+  .footer-contact {
+    gap: 12px;
   }
 }
 
@@ -315,13 +290,4 @@ footer a:focus-visible,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-#hero-background {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-
-  overflow: hidden;
-  pointer-events: none;
 }
