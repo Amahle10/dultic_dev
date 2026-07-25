@@ -56,6 +56,7 @@ body {
 /* Technical grid */
 
 body::before {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 1;
@@ -314,4 +315,13 @@ footer a:focus-visible,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+#hero-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  overflow: hidden;
+  pointer-events: none;
 }
