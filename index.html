@@ -314,5 +314,102 @@
       document.getElementById("year").textContent =
         new Date().getFullYear();
     </script>
+
+    <script type="module">
+  import {
+    animate,
+    createTimeline,
+    splitText,
+    stagger,
+  } from "https://cdn.jsdelivr.net/npm/animejs@4.5.0/+esm";
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!reducedMotion) {
+    document.fonts.ready.then(() => {
+      const heading = splitText("h1", {
+        words: {
+          wrap: "clip",
+          class: "hero-word",
+        },
+        accessible: true,
+      });
+
+      const introTimeline = createTimeline({
+        defaults: {
+          ease: "outExpo",
+        },
+      });
+
+      introTimeline
+        .add(
+          "header",
+          {
+            opacity: { from: 0 },
+            y: { from: -18 },
+            duration: 800,
+          },
+          0
+        )
+        .add(
+          ".eyebrow",
+          {
+            opacity: { from: 0 },
+            x: { from: -28 },
+            duration: 700,
+          },
+          180
+        )
+        .add(
+          heading.words,
+          {
+            opacity: { from: 0 },
+            y: { from: "120%" },
+            duration: 1100,
+            delay: stagger(80),
+          },
+          280
+        )
+        .add(
+          ".intro",
+          {
+            opacity: { from: 0 },
+            y: { from: 28 },
+            duration: 900,
+          },
+          760
+        )
+        .add(
+          ".launch",
+          {
+            opacity: { from: 0 },
+            y: { from: 28 },
+            duration: 900,
+          },
+          900
+        )
+        .add(
+          "footer",
+          {
+            opacity: { from: 0 },
+            y: { from: 16 },
+            duration: 750,
+          },
+          1050
+        );
+
+      animate(".status-dot", {
+        scale: 1.7,
+        opacity: 0.35,
+        duration: 950,
+        alternate: true,
+        loop: true,
+        ease: "inOutSine",
+      });
+    });
+  }
+</script>
   </body>
 </html>
